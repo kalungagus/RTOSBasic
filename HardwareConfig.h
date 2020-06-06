@@ -12,9 +12,13 @@
 
 #define DIGITAL_INPUT_1_PORT            G
 #define DIGITAL_INPUT_1_PIN             12
+#define DIGITAL_INPUT_1_CHANGE_NOTIFICATION_EN
+#define DIGITAL_INPUT_1_PULLUP_EN
 
-#define DIGITAL_INPUT_2_PORT            F
-#define DIGITAL_INPUT_2_PIN             3
+//#define DIGITAL_INPUT_2_PORT            F
+//#define DIGITAL_INPUT_2_PIN             3
+//#define DIGITAL_INPUT_2_CHANGE_NOTIFICATION_EN
+//#define DIGITAL_INPUT_2_PULLUP_EN
 
 #define DIGITAL_OUTPUT_1_PORT           E
 #define DIGITAL_OUTPUT_1_PIN            2

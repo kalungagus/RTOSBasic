@@ -119,7 +119,8 @@ static void taskButtonRead(void *pvParameters)
     
     for(;;)
     {
-        if(lastStatus != PORTGbits.RG12)
+        waitInputOnChangeEvent();
+        if(lastStatus != DigitalPortRead(DIGITAL_INPUT_1))
         {
             lastStatus = DigitalPortRead(DIGITAL_INPUT_1);
             led.portID = GetDigitalPortID(DIGITAL_OUTPUT_2);
@@ -129,8 +130,6 @@ static void taskButtonRead(void *pvParameters)
                 led.status = 1;
             setLedInfo(&led);
         }
-        else
-            vTaskDelay( 100 / portTICK_PERIOD_MS );
     }
 }
 

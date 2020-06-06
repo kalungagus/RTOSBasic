@@ -68,7 +68,9 @@
 //******************************************************************************
 // Macros
 //******************************************************************************
+#define PASTE2(a,b)                      a##b
 #define PASTE3(a,b,c)                    a##b##c
+#define PASTE4(a,b,c,d)                  a##b##c##d
 #define PASTE5(a,b,c,d,e)                a##b##c##d##e
 
 #define _DigitalPortRead(a,b)            PASTE5(PORT,a,bits.R,a,b)
@@ -88,6 +90,7 @@ extern void initDigitalPorts(void);
 extern void setDigitalOutByID(uint8_t ID, int8_t value);
 extern void invertDigitalOutByID(uint8_t ID);
 extern int8_t readDigitalPortByID(uint8_t ID);
+extern void waitInputOnChangeEvent(void);
 
 #endif
 //******************************************************************************

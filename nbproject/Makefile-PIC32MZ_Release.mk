@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=SystemHooks.c USBPacketManager.c main.c LEDInterface.c USBFreeRTOS.c USBFreeRTOS_isr.S ADCFreeRTOS.c ADCFreeRTOS_isr.S PWMFreeRTOS.c Source/portable/MemMang/heap_4.c Source/portable/MPLAB/PIC32MZ/port.c Source/portable/MPLAB/PIC32MZ/port_asm.S Source/croutine.c Source/event_groups.c Source/list.c Source/queue.c Source/stream_buffer.c Source/tasks.c Source/timers.c DigitalPort.c
+SOURCEFILES_QUOTED_IF_SPACED=SystemHooks.c USBPacketManager.c main.c Source/portable/MemMang/heap_4.c Source/portable/MPLAB/PIC32MZ/port.c Source/portable/MPLAB/PIC32MZ/port_asm.S Source/croutine.c Source/event_groups.c Source/list.c Source/queue.c Source/stream_buffer.c Source/tasks.c Source/timers.c USBFreeRTOS_isr.S USBFreeRTOS.c ADCFreeRTOS_isr.S ADCFreeRTOS.c DigitalPort.c PWMFreeRTOS.c LEDInterface.c PortAOnChange_isr.S PortBOnChange_isr.S PortCOnChange_isr.S PortDOnChange_isr.S PortEOnChange_isr.S PortFOnChange_isr.S PortGOnChange_isr.S
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/SystemHooks.o ${OBJECTDIR}/USBPacketManager.o ${OBJECTDIR}/main.o ${OBJECTDIR}/LEDInterface.o ${OBJECTDIR}/USBFreeRTOS.o ${OBJECTDIR}/USBFreeRTOS_isr.o ${OBJECTDIR}/ADCFreeRTOS.o ${OBJECTDIR}/ADCFreeRTOS_isr.o ${OBJECTDIR}/PWMFreeRTOS.o ${OBJECTDIR}/Source/portable/MemMang/heap_4.o ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port.o ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o ${OBJECTDIR}/Source/croutine.o ${OBJECTDIR}/Source/event_groups.o ${OBJECTDIR}/Source/list.o ${OBJECTDIR}/Source/queue.o ${OBJECTDIR}/Source/stream_buffer.o ${OBJECTDIR}/Source/tasks.o ${OBJECTDIR}/Source/timers.o ${OBJECTDIR}/DigitalPort.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/SystemHooks.o.d ${OBJECTDIR}/USBPacketManager.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/LEDInterface.o.d ${OBJECTDIR}/USBFreeRTOS.o.d ${OBJECTDIR}/USBFreeRTOS_isr.o.d ${OBJECTDIR}/ADCFreeRTOS.o.d ${OBJECTDIR}/ADCFreeRTOS_isr.o.d ${OBJECTDIR}/PWMFreeRTOS.o.d ${OBJECTDIR}/Source/portable/MemMang/heap_4.o.d ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port.o.d ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d ${OBJECTDIR}/Source/croutine.o.d ${OBJECTDIR}/Source/event_groups.o.d ${OBJECTDIR}/Source/list.o.d ${OBJECTDIR}/Source/queue.o.d ${OBJECTDIR}/Source/stream_buffer.o.d ${OBJECTDIR}/Source/tasks.o.d ${OBJECTDIR}/Source/timers.o.d ${OBJECTDIR}/DigitalPort.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/SystemHooks.o ${OBJECTDIR}/USBPacketManager.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Source/portable/MemMang/heap_4.o ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port.o ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o ${OBJECTDIR}/Source/croutine.o ${OBJECTDIR}/Source/event_groups.o ${OBJECTDIR}/Source/list.o ${OBJECTDIR}/Source/queue.o ${OBJECTDIR}/Source/stream_buffer.o ${OBJECTDIR}/Source/tasks.o ${OBJECTDIR}/Source/timers.o ${OBJECTDIR}/USBFreeRTOS_isr.o ${OBJECTDIR}/USBFreeRTOS.o ${OBJECTDIR}/ADCFreeRTOS_isr.o ${OBJECTDIR}/ADCFreeRTOS.o ${OBJECTDIR}/DigitalPort.o ${OBJECTDIR}/PWMFreeRTOS.o ${OBJECTDIR}/LEDInterface.o ${OBJECTDIR}/PortAOnChange_isr.o ${OBJECTDIR}/PortBOnChange_isr.o ${OBJECTDIR}/PortCOnChange_isr.o ${OBJECTDIR}/PortDOnChange_isr.o ${OBJECTDIR}/PortEOnChange_isr.o ${OBJECTDIR}/PortFOnChange_isr.o ${OBJECTDIR}/PortGOnChange_isr.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/SystemHooks.o.d ${OBJECTDIR}/USBPacketManager.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/Source/portable/MemMang/heap_4.o.d ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port.o.d ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d ${OBJECTDIR}/Source/croutine.o.d ${OBJECTDIR}/Source/event_groups.o.d ${OBJECTDIR}/Source/list.o.d ${OBJECTDIR}/Source/queue.o.d ${OBJECTDIR}/Source/stream_buffer.o.d ${OBJECTDIR}/Source/tasks.o.d ${OBJECTDIR}/Source/timers.o.d ${OBJECTDIR}/USBFreeRTOS_isr.o.d ${OBJECTDIR}/USBFreeRTOS.o.d ${OBJECTDIR}/ADCFreeRTOS_isr.o.d ${OBJECTDIR}/ADCFreeRTOS.o.d ${OBJECTDIR}/DigitalPort.o.d ${OBJECTDIR}/PWMFreeRTOS.o.d ${OBJECTDIR}/LEDInterface.o.d ${OBJECTDIR}/PortAOnChange_isr.o.d ${OBJECTDIR}/PortBOnChange_isr.o.d ${OBJECTDIR}/PortCOnChange_isr.o.d ${OBJECTDIR}/PortDOnChange_isr.o.d ${OBJECTDIR}/PortEOnChange_isr.o.d ${OBJECTDIR}/PortFOnChange_isr.o.d ${OBJECTDIR}/PortGOnChange_isr.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/SystemHooks.o ${OBJECTDIR}/USBPacketManager.o ${OBJECTDIR}/main.o ${OBJECTDIR}/LEDInterface.o ${OBJECTDIR}/USBFreeRTOS.o ${OBJECTDIR}/USBFreeRTOS_isr.o ${OBJECTDIR}/ADCFreeRTOS.o ${OBJECTDIR}/ADCFreeRTOS_isr.o ${OBJECTDIR}/PWMFreeRTOS.o ${OBJECTDIR}/Source/portable/MemMang/heap_4.o ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port.o ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o ${OBJECTDIR}/Source/croutine.o ${OBJECTDIR}/Source/event_groups.o ${OBJECTDIR}/Source/list.o ${OBJECTDIR}/Source/queue.o ${OBJECTDIR}/Source/stream_buffer.o ${OBJECTDIR}/Source/tasks.o ${OBJECTDIR}/Source/timers.o ${OBJECTDIR}/DigitalPort.o
+OBJECTFILES=${OBJECTDIR}/SystemHooks.o ${OBJECTDIR}/USBPacketManager.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Source/portable/MemMang/heap_4.o ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port.o ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o ${OBJECTDIR}/Source/croutine.o ${OBJECTDIR}/Source/event_groups.o ${OBJECTDIR}/Source/list.o ${OBJECTDIR}/Source/queue.o ${OBJECTDIR}/Source/stream_buffer.o ${OBJECTDIR}/Source/tasks.o ${OBJECTDIR}/Source/timers.o ${OBJECTDIR}/USBFreeRTOS_isr.o ${OBJECTDIR}/USBFreeRTOS.o ${OBJECTDIR}/ADCFreeRTOS_isr.o ${OBJECTDIR}/ADCFreeRTOS.o ${OBJECTDIR}/DigitalPort.o ${OBJECTDIR}/PWMFreeRTOS.o ${OBJECTDIR}/LEDInterface.o ${OBJECTDIR}/PortAOnChange_isr.o ${OBJECTDIR}/PortBOnChange_isr.o ${OBJECTDIR}/PortCOnChange_isr.o ${OBJECTDIR}/PortDOnChange_isr.o ${OBJECTDIR}/PortEOnChange_isr.o ${OBJECTDIR}/PortFOnChange_isr.o ${OBJECTDIR}/PortGOnChange_isr.o
 
 # Source Files
-SOURCEFILES=SystemHooks.c USBPacketManager.c main.c LEDInterface.c USBFreeRTOS.c USBFreeRTOS_isr.S ADCFreeRTOS.c ADCFreeRTOS_isr.S PWMFreeRTOS.c Source/portable/MemMang/heap_4.c Source/portable/MPLAB/PIC32MZ/port.c Source/portable/MPLAB/PIC32MZ/port_asm.S Source/croutine.c Source/event_groups.c Source/list.c Source/queue.c Source/stream_buffer.c Source/tasks.c Source/timers.c DigitalPort.c
+SOURCEFILES=SystemHooks.c USBPacketManager.c main.c Source/portable/MemMang/heap_4.c Source/portable/MPLAB/PIC32MZ/port.c Source/portable/MPLAB/PIC32MZ/port_asm.S Source/croutine.c Source/event_groups.c Source/list.c Source/queue.c Source/stream_buffer.c Source/tasks.c Source/timers.c USBFreeRTOS_isr.S USBFreeRTOS.c ADCFreeRTOS_isr.S ADCFreeRTOS.c DigitalPort.c PWMFreeRTOS.c LEDInterface.c PortAOnChange_isr.S PortBOnChange_isr.S PortCOnChange_isr.S PortDOnChange_isr.S PortEOnChange_isr.S PortFOnChange_isr.S PortGOnChange_isr.S
 
 
 
@@ -101,6 +101,13 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assembleWithPreprocess
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o: Source/portable/MPLAB/PIC32MZ/port_asm.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ" 
+	@${RM} ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d 
+	@${RM} ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o 
+	@${RM} ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.ok ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d" "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d"  -o ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o Source/portable/MPLAB/PIC32MZ/port_asm.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1 -mdfp=${DFP_DIR}
+	
 ${OBJECTDIR}/USBFreeRTOS_isr.o: USBFreeRTOS_isr.S  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/USBFreeRTOS_isr.o.d 
@@ -115,14 +122,63 @@ ${OBJECTDIR}/ADCFreeRTOS_isr.o: ADCFreeRTOS_isr.S  nbproject/Makefile-${CND_CONF
 	@${RM} ${OBJECTDIR}/ADCFreeRTOS_isr.o.ok ${OBJECTDIR}/ADCFreeRTOS_isr.o.err 
 	@${FIXDEPS} "${OBJECTDIR}/ADCFreeRTOS_isr.o.d" "${OBJECTDIR}/ADCFreeRTOS_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/ADCFreeRTOS_isr.o.d"  -o ${OBJECTDIR}/ADCFreeRTOS_isr.o ADCFreeRTOS_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/ADCFreeRTOS_isr.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1 -mdfp=${DFP_DIR}
 	
+${OBJECTDIR}/PortAOnChange_isr.o: PortAOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortAOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortAOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortAOnChange_isr.o.ok ${OBJECTDIR}/PortAOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortAOnChange_isr.o.d" "${OBJECTDIR}/PortAOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortAOnChange_isr.o.d"  -o ${OBJECTDIR}/PortAOnChange_isr.o PortAOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortAOnChange_isr.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1 -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PortBOnChange_isr.o: PortBOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortBOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortBOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortBOnChange_isr.o.ok ${OBJECTDIR}/PortBOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortBOnChange_isr.o.d" "${OBJECTDIR}/PortBOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortBOnChange_isr.o.d"  -o ${OBJECTDIR}/PortBOnChange_isr.o PortBOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortBOnChange_isr.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1 -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PortCOnChange_isr.o: PortCOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortCOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortCOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortCOnChange_isr.o.ok ${OBJECTDIR}/PortCOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortCOnChange_isr.o.d" "${OBJECTDIR}/PortCOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortCOnChange_isr.o.d"  -o ${OBJECTDIR}/PortCOnChange_isr.o PortCOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortCOnChange_isr.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1 -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PortDOnChange_isr.o: PortDOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortDOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortDOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortDOnChange_isr.o.ok ${OBJECTDIR}/PortDOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortDOnChange_isr.o.d" "${OBJECTDIR}/PortDOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortDOnChange_isr.o.d"  -o ${OBJECTDIR}/PortDOnChange_isr.o PortDOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortDOnChange_isr.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1 -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PortEOnChange_isr.o: PortEOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortEOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortEOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortEOnChange_isr.o.ok ${OBJECTDIR}/PortEOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortEOnChange_isr.o.d" "${OBJECTDIR}/PortEOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortEOnChange_isr.o.d"  -o ${OBJECTDIR}/PortEOnChange_isr.o PortEOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortEOnChange_isr.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1 -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PortFOnChange_isr.o: PortFOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortFOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortFOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortFOnChange_isr.o.ok ${OBJECTDIR}/PortFOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortFOnChange_isr.o.d" "${OBJECTDIR}/PortFOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortFOnChange_isr.o.d"  -o ${OBJECTDIR}/PortFOnChange_isr.o PortFOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortFOnChange_isr.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1 -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PortGOnChange_isr.o: PortGOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortGOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortGOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortGOnChange_isr.o.ok ${OBJECTDIR}/PortGOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortGOnChange_isr.o.d" "${OBJECTDIR}/PortGOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortGOnChange_isr.o.d"  -o ${OBJECTDIR}/PortGOnChange_isr.o PortGOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortGOnChange_isr.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1 -mdfp=${DFP_DIR}
+	
+else
 ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o: Source/portable/MPLAB/PIC32MZ/port_asm.S  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ" 
 	@${RM} ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d 
 	@${RM} ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o 
 	@${RM} ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.ok ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d" "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d"  -o ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o Source/portable/MPLAB/PIC32MZ/port_asm.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1 -mdfp=${DFP_DIR}
+	@${FIXDEPS} "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d" "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d"  -o ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o Source/portable/MPLAB/PIC32MZ/port_asm.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.asm.d",--gdwarf-2 -mdfp=${DFP_DIR}
 	
-else
 ${OBJECTDIR}/USBFreeRTOS_isr.o: USBFreeRTOS_isr.S  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/USBFreeRTOS_isr.o.d 
@@ -137,12 +193,54 @@ ${OBJECTDIR}/ADCFreeRTOS_isr.o: ADCFreeRTOS_isr.S  nbproject/Makefile-${CND_CONF
 	@${RM} ${OBJECTDIR}/ADCFreeRTOS_isr.o.ok ${OBJECTDIR}/ADCFreeRTOS_isr.o.err 
 	@${FIXDEPS} "${OBJECTDIR}/ADCFreeRTOS_isr.o.d" "${OBJECTDIR}/ADCFreeRTOS_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/ADCFreeRTOS_isr.o.d"  -o ${OBJECTDIR}/ADCFreeRTOS_isr.o ADCFreeRTOS_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/ADCFreeRTOS_isr.o.asm.d",--gdwarf-2 -mdfp=${DFP_DIR}
 	
-${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o: Source/portable/MPLAB/PIC32MZ/port_asm.S  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ" 
-	@${RM} ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d 
-	@${RM} ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o 
-	@${RM} ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.ok ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.err 
-	@${FIXDEPS} "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d" "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.d"  -o ${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o Source/portable/MPLAB/PIC32MZ/port_asm.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/Source/portable/MPLAB/PIC32MZ/port_asm.o.asm.d",--gdwarf-2 -mdfp=${DFP_DIR}
+${OBJECTDIR}/PortAOnChange_isr.o: PortAOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortAOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortAOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortAOnChange_isr.o.ok ${OBJECTDIR}/PortAOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortAOnChange_isr.o.d" "${OBJECTDIR}/PortAOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortAOnChange_isr.o.d"  -o ${OBJECTDIR}/PortAOnChange_isr.o PortAOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortAOnChange_isr.o.asm.d",--gdwarf-2 -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PortBOnChange_isr.o: PortBOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortBOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortBOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortBOnChange_isr.o.ok ${OBJECTDIR}/PortBOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortBOnChange_isr.o.d" "${OBJECTDIR}/PortBOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortBOnChange_isr.o.d"  -o ${OBJECTDIR}/PortBOnChange_isr.o PortBOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortBOnChange_isr.o.asm.d",--gdwarf-2 -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PortCOnChange_isr.o: PortCOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortCOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortCOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortCOnChange_isr.o.ok ${OBJECTDIR}/PortCOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortCOnChange_isr.o.d" "${OBJECTDIR}/PortCOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortCOnChange_isr.o.d"  -o ${OBJECTDIR}/PortCOnChange_isr.o PortCOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortCOnChange_isr.o.asm.d",--gdwarf-2 -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PortDOnChange_isr.o: PortDOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortDOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortDOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortDOnChange_isr.o.ok ${OBJECTDIR}/PortDOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortDOnChange_isr.o.d" "${OBJECTDIR}/PortDOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortDOnChange_isr.o.d"  -o ${OBJECTDIR}/PortDOnChange_isr.o PortDOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortDOnChange_isr.o.asm.d",--gdwarf-2 -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PortEOnChange_isr.o: PortEOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortEOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortEOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortEOnChange_isr.o.ok ${OBJECTDIR}/PortEOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortEOnChange_isr.o.d" "${OBJECTDIR}/PortEOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortEOnChange_isr.o.d"  -o ${OBJECTDIR}/PortEOnChange_isr.o PortEOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortEOnChange_isr.o.asm.d",--gdwarf-2 -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PortFOnChange_isr.o: PortFOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortFOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortFOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortFOnChange_isr.o.ok ${OBJECTDIR}/PortFOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortFOnChange_isr.o.d" "${OBJECTDIR}/PortFOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortFOnChange_isr.o.d"  -o ${OBJECTDIR}/PortFOnChange_isr.o PortFOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortFOnChange_isr.o.asm.d",--gdwarf-2 -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PortGOnChange_isr.o: PortGOnChange_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PortGOnChange_isr.o.d 
+	@${RM} ${OBJECTDIR}/PortGOnChange_isr.o 
+	@${RM} ${OBJECTDIR}/PortGOnChange_isr.o.ok ${OBJECTDIR}/PortGOnChange_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/PortGOnChange_isr.o.d" "${OBJECTDIR}/PortGOnChange_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"." -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PortGOnChange_isr.o.d"  -o ${OBJECTDIR}/PortGOnChange_isr.o PortGOnChange_isr.S  -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/PortGOnChange_isr.o.asm.d",--gdwarf-2 -mdfp=${DFP_DIR}
 	
 endif
 
@@ -166,30 +264,6 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
-	
-${OBJECTDIR}/LEDInterface.o: LEDInterface.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LEDInterface.o.d 
-	@${RM} ${OBJECTDIR}/LEDInterface.o 
-	@${FIXDEPS} "${OBJECTDIR}/LEDInterface.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/LEDInterface.o.d" -o ${OBJECTDIR}/LEDInterface.o LEDInterface.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
-	
-${OBJECTDIR}/USBFreeRTOS.o: USBFreeRTOS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/USBFreeRTOS.o.d 
-	@${RM} ${OBJECTDIR}/USBFreeRTOS.o 
-	@${FIXDEPS} "${OBJECTDIR}/USBFreeRTOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/USBFreeRTOS.o.d" -o ${OBJECTDIR}/USBFreeRTOS.o USBFreeRTOS.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
-	
-${OBJECTDIR}/ADCFreeRTOS.o: ADCFreeRTOS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ADCFreeRTOS.o.d 
-	@${RM} ${OBJECTDIR}/ADCFreeRTOS.o 
-	@${FIXDEPS} "${OBJECTDIR}/ADCFreeRTOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/ADCFreeRTOS.o.d" -o ${OBJECTDIR}/ADCFreeRTOS.o ADCFreeRTOS.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
-	
-${OBJECTDIR}/PWMFreeRTOS.o: PWMFreeRTOS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/PWMFreeRTOS.o.d 
-	@${RM} ${OBJECTDIR}/PWMFreeRTOS.o 
-	@${FIXDEPS} "${OBJECTDIR}/PWMFreeRTOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PWMFreeRTOS.o.d" -o ${OBJECTDIR}/PWMFreeRTOS.o PWMFreeRTOS.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/Source/portable/MemMang/heap_4.o: Source/portable/MemMang/heap_4.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/Source/portable/MemMang" 
@@ -245,11 +319,35 @@ ${OBJECTDIR}/Source/timers.o: Source/timers.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/Source/timers.o 
 	@${FIXDEPS} "${OBJECTDIR}/Source/timers.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/Source/timers.o.d" -o ${OBJECTDIR}/Source/timers.o Source/timers.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
+${OBJECTDIR}/USBFreeRTOS.o: USBFreeRTOS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/USBFreeRTOS.o.d 
+	@${RM} ${OBJECTDIR}/USBFreeRTOS.o 
+	@${FIXDEPS} "${OBJECTDIR}/USBFreeRTOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/USBFreeRTOS.o.d" -o ${OBJECTDIR}/USBFreeRTOS.o USBFreeRTOS.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/ADCFreeRTOS.o: ADCFreeRTOS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ADCFreeRTOS.o.d 
+	@${RM} ${OBJECTDIR}/ADCFreeRTOS.o 
+	@${FIXDEPS} "${OBJECTDIR}/ADCFreeRTOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/ADCFreeRTOS.o.d" -o ${OBJECTDIR}/ADCFreeRTOS.o ADCFreeRTOS.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	
 ${OBJECTDIR}/DigitalPort.o: DigitalPort.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/DigitalPort.o.d 
 	@${RM} ${OBJECTDIR}/DigitalPort.o 
 	@${FIXDEPS} "${OBJECTDIR}/DigitalPort.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/DigitalPort.o.d" -o ${OBJECTDIR}/DigitalPort.o DigitalPort.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PWMFreeRTOS.o: PWMFreeRTOS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PWMFreeRTOS.o.d 
+	@${RM} ${OBJECTDIR}/PWMFreeRTOS.o 
+	@${FIXDEPS} "${OBJECTDIR}/PWMFreeRTOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PWMFreeRTOS.o.d" -o ${OBJECTDIR}/PWMFreeRTOS.o PWMFreeRTOS.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/LEDInterface.o: LEDInterface.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/LEDInterface.o.d 
+	@${RM} ${OBJECTDIR}/LEDInterface.o 
+	@${FIXDEPS} "${OBJECTDIR}/LEDInterface.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/LEDInterface.o.d" -o ${OBJECTDIR}/LEDInterface.o LEDInterface.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 else
 ${OBJECTDIR}/SystemHooks.o: SystemHooks.c  nbproject/Makefile-${CND_CONF}.mk
@@ -269,30 +367,6 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
-	
-${OBJECTDIR}/LEDInterface.o: LEDInterface.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LEDInterface.o.d 
-	@${RM} ${OBJECTDIR}/LEDInterface.o 
-	@${FIXDEPS} "${OBJECTDIR}/LEDInterface.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/LEDInterface.o.d" -o ${OBJECTDIR}/LEDInterface.o LEDInterface.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
-	
-${OBJECTDIR}/USBFreeRTOS.o: USBFreeRTOS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/USBFreeRTOS.o.d 
-	@${RM} ${OBJECTDIR}/USBFreeRTOS.o 
-	@${FIXDEPS} "${OBJECTDIR}/USBFreeRTOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/USBFreeRTOS.o.d" -o ${OBJECTDIR}/USBFreeRTOS.o USBFreeRTOS.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
-	
-${OBJECTDIR}/ADCFreeRTOS.o: ADCFreeRTOS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/ADCFreeRTOS.o.d 
-	@${RM} ${OBJECTDIR}/ADCFreeRTOS.o 
-	@${FIXDEPS} "${OBJECTDIR}/ADCFreeRTOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/ADCFreeRTOS.o.d" -o ${OBJECTDIR}/ADCFreeRTOS.o ADCFreeRTOS.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
-	
-${OBJECTDIR}/PWMFreeRTOS.o: PWMFreeRTOS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/PWMFreeRTOS.o.d 
-	@${RM} ${OBJECTDIR}/PWMFreeRTOS.o 
-	@${FIXDEPS} "${OBJECTDIR}/PWMFreeRTOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PWMFreeRTOS.o.d" -o ${OBJECTDIR}/PWMFreeRTOS.o PWMFreeRTOS.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 ${OBJECTDIR}/Source/portable/MemMang/heap_4.o: Source/portable/MemMang/heap_4.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/Source/portable/MemMang" 
@@ -348,11 +422,35 @@ ${OBJECTDIR}/Source/timers.o: Source/timers.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/Source/timers.o 
 	@${FIXDEPS} "${OBJECTDIR}/Source/timers.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/Source/timers.o.d" -o ${OBJECTDIR}/Source/timers.o Source/timers.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
+${OBJECTDIR}/USBFreeRTOS.o: USBFreeRTOS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/USBFreeRTOS.o.d 
+	@${RM} ${OBJECTDIR}/USBFreeRTOS.o 
+	@${FIXDEPS} "${OBJECTDIR}/USBFreeRTOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/USBFreeRTOS.o.d" -o ${OBJECTDIR}/USBFreeRTOS.o USBFreeRTOS.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/ADCFreeRTOS.o: ADCFreeRTOS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ADCFreeRTOS.o.d 
+	@${RM} ${OBJECTDIR}/ADCFreeRTOS.o 
+	@${FIXDEPS} "${OBJECTDIR}/ADCFreeRTOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/ADCFreeRTOS.o.d" -o ${OBJECTDIR}/ADCFreeRTOS.o ADCFreeRTOS.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	
 ${OBJECTDIR}/DigitalPort.o: DigitalPort.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/DigitalPort.o.d 
 	@${RM} ${OBJECTDIR}/DigitalPort.o 
 	@${FIXDEPS} "${OBJECTDIR}/DigitalPort.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/DigitalPort.o.d" -o ${OBJECTDIR}/DigitalPort.o DigitalPort.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/PWMFreeRTOS.o: PWMFreeRTOS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/PWMFreeRTOS.o.d 
+	@${RM} ${OBJECTDIR}/PWMFreeRTOS.o 
+	@${FIXDEPS} "${OBJECTDIR}/PWMFreeRTOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/PWMFreeRTOS.o.d" -o ${OBJECTDIR}/PWMFreeRTOS.o PWMFreeRTOS.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
+	
+${OBJECTDIR}/LEDInterface.o: LEDInterface.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/LEDInterface.o.d 
+	@${RM} ${OBJECTDIR}/LEDInterface.o 
+	@${FIXDEPS} "${OBJECTDIR}/LEDInterface.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"." -I"Source/include" -I"Source/portable/MPLAB/PIC32MZ" -MMD -MF "${OBJECTDIR}/LEDInterface.o.d" -o ${OBJECTDIR}/LEDInterface.o LEDInterface.c    -DXPRJ_PIC32MZ_Release=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp=${DFP_DIR}
 	
 endif
 
