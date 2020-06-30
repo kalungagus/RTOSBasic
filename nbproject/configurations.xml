@@ -11,19 +11,37 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f3" displayName="Framework" projectFiles="true">
-        <logicalFolder name="f5" displayName="ADC FreeRTOS" projectFiles="true">
+        <logicalFolder name="f5" displayName="ADC" projectFiles="true">
           <itemPath>ADCFreeRTOS.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f4" displayName="Digital Port" projectFiles="true">
-          <itemPath>DigitalPort.h</itemPath>
+        <logicalFolder name="f9" displayName="HC-SR04" projectFiles="true">
+          <itemPath>HC-SR04.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f10" displayName="HX711" projectFiles="true">
+          <itemPath>HX711.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f6" displayName="I2C" projectFiles="true">
+          <itemPath>I2C.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f7" displayName="INA219" projectFiles="true">
+          <itemPath>INA219.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f8" displayName="Input Capture" projectFiles="true">
+          <itemPath>InputCapture.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f11" displayName="IO Ports" projectFiles="true">
+          <itemPath>IOPorts.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f3" displayName="LED Interface" projectFiles="true">
           <itemPath>LEDInterface.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f2" displayName="PWM FreeRTOS" projectFiles="true">
+        <logicalFolder name="f2" displayName="PWM" projectFiles="true">
           <itemPath>PWMFreeRTOS.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f1" displayName="USB FreeRTOS" projectFiles="true">
+        <logicalFolder name="f12" displayName="Timer" projectFiles="true">
+          <itemPath>Timer.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f1" displayName="USB" projectFiles="true">
           <itemPath>USBFreeRTOS.h</itemPath>
           <itemPath>USBDefinitions.h</itemPath>
         </logicalFolder>
@@ -72,12 +90,36 @@
         <itemPath>main.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="Framework" projectFiles="true">
-        <logicalFolder name="f2" displayName="ADC FreeRTOS" projectFiles="true">
-          <itemPath>ADCFreeRTOS_isr.S</itemPath>
+        <logicalFolder name="f2" displayName="ADC" projectFiles="true">
           <itemPath>ADCFreeRTOS.c</itemPath>
+          <itemPath>ADC2_isr.S</itemPath>
+          <itemPath>ADC3_isr.S</itemPath>
+          <itemPath>ADC1_isr.S</itemPath>
+          <itemPath>ADC4_isr.S</itemPath>
         </logicalFolder>
         <logicalFolder name="f3" displayName="Digital Port" projectFiles="true">
-          <itemPath>DigitalPort.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f9" displayName="HC-SR04" projectFiles="true">
+          <itemPath>HC-SR04.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f10" displayName="HX711" projectFiles="true">
+          <itemPath>HX711.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f6" displayName="I2C" projectFiles="true">
+          <itemPath>I2C.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f7" displayName="INA219" projectFiles="true">
+          <itemPath>INA219.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f8" displayName="Input Capture" projectFiles="true">
+          <itemPath>InputCapture.c</itemPath>
+          <itemPath>IC2_isr.S</itemPath>
+          <itemPath>IC4_isr.S</itemPath>
+          <itemPath>IC1_isr.S</itemPath>
+          <itemPath>IC3_isr.S</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f11" displayName="IO Ports" projectFiles="true">
+          <itemPath>IOPorts.c</itemPath>
           <itemPath>PortAOnChange_isr.S</itemPath>
           <itemPath>PortBOnChange_isr.S</itemPath>
           <itemPath>PortCOnChange_isr.S</itemPath>
@@ -89,10 +131,17 @@
         <logicalFolder name="f5" displayName="LED Interface" projectFiles="true">
           <itemPath>LEDInterface.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="f4" displayName="PWM FreeRTOS" projectFiles="true">
+        <logicalFolder name="f4" displayName="PWM" projectFiles="true">
           <itemPath>PWMFreeRTOS.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="f1" displayName="USB FreeRTOS" projectFiles="true">
+        <logicalFolder name="f12" displayName="Timer" projectFiles="true">
+          <itemPath>Timer.c</itemPath>
+          <itemPath>Timer3_isr.S</itemPath>
+          <itemPath>Timer2_isr.S</itemPath>
+          <itemPath>Timer4_isr.S</itemPath>
+          <itemPath>Timer5_isr.S</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f1" displayName="USB" projectFiles="true">
           <itemPath>USBFreeRTOS_isr.S</itemPath>
           <itemPath>USBFreeRTOS.c</itemPath>
         </logicalFolder>

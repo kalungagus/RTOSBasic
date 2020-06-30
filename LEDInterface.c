@@ -9,7 +9,6 @@
 #include "task.h"
 #include "queue.h"
 #include "LEDInterface.h"
-#include "DigitalPort.h"
 
 QueueHandle_t ledQueue;
 
@@ -29,6 +28,13 @@ void LEDInterfaceInit(void)
     xTaskCreate(taskLedControl, "LedControl", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL);
 }
 
+void setupLed(LedInfo *led)
+{
+    setPinDirection(led->port, IO_OUTPUT);
+    setPinAnalogState(led->port, PIN_DIGITAL);
+    writePin(led->port, led->status);
+}
+
 void setLedInfo(LedInfo *led)
 {
     xQueueSend(ledQueue,  (void *)led, portMAX_DELAY);
@@ -41,7 +47,7 @@ static void taskLedControl(void *pvParameters)
     for(;;)
     {
         xQueueReceive(ledQueue, &led, portMAX_DELAY);
-        setDigitalOutByID(led.portID, led.status);
+        writePin(led.port, led.status);
     }
 }
 

@@ -12,7 +12,7 @@ Source/include/list.h  \
 Source/include/queue.h  \
  Source/include/task.h  \
 LEDInterface.h  \
+IOPorts.h  \
 ADCFreeRTOS.h  \
-PWMFreeRTOS.h  \
- DigitalPort.h  \
-HardwareConfig.h 
+ HardwareConfig.h  \
+PWMFreeRTOS.h 

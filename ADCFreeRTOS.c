@@ -6,23 +6,162 @@
 //******************************************************************************
 #include <xc.h>
 #include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
 #include "semphr.h"
+#include "ADCFreeRTOS.h"
+
+#define ADC0_IPC_REGISTER               IPC14
+#define ADC1_IPC_REGISTER               IPC15
+#define ADC2_IPC_REGISTER               IPC15
+#define ADC3_IPC_REGISTER               IPC15
+#define ADC4_IPC_REGISTER               IPC15
+#define ADC5_IPC_REGISTER               IPC16
+#define ADC6_IPC_REGISTER               IPC16
+#define ADC7_IPC_REGISTER               IPC16
+#define ADC8_IPC_REGISTER               IPC16
+#define ADC9_IPC_REGISTER               IPC17
+#define ADC10_IPC_REGISTER              IPC17
+
+#define ADC0_TRIG_SOURCE_REGISTER       ADCTRG1
+#define ADC1_TRIG_SOURCE_REGISTER       ADCTRG1
+#define ADC2_TRIG_SOURCE_REGISTER       ADCTRG1
+#define ADC3_TRIG_SOURCE_REGISTER       ADCTRG1
+#define ADC4_TRIG_SOURCE_REGISTER       ADCTRG2
+#define ADC5_TRIG_SOURCE_REGISTER       ADCTRG2
+#define ADC6_TRIG_SOURCE_REGISTER       ADCTRG2
+#define ADC7_TRIG_SOURCE_REGISTER       ADCTRG2
+#define ADC8_TRIG_SOURCE_REGISTER       ADCTRG3
+#define ADC9_TRIG_SOURCE_REGISTER       ADCTRG3
+#define ADC10_TRIG_SOURCE_REGISTER      ADCTRG3
+
+#define ADC0_MODULE                     0
+#define ADC1_MODULE                     1
+#define ADC2_MODULE                     2
+#define ADC3_MODULE                     3
+#define ADC4_MODULE                     4
+#define ADC5_MODULE                     5
+#define ADC6_MODULE                     6
+#define ADC7_MODULE                     7
+#define ADC8_MODULE                     7
+#define ADC9_MODULE                     7
+#define ADC10_MODULE                    7
+
+#if (DAQ_0_ADC == 1) || (DAQ_1_ADC == 1) || (DAQ_2_ADC == 1) || (DAQ_3_ADC == 1) || (DAQ_4_ADC == 1)
+    #define ENABLE_ADC_1_IRQ
+#endif
+
+#if (DAQ_0_ADC == 2) || (DAQ_1_ADC == 2) || (DAQ_2_ADC == 2) || (DAQ_3_ADC == 2) || (DAQ_4_ADC == 2)
+    #define ENABLE_ADC_2_IRQ
+#endif
+
+#if (DAQ_0_ADC == 3) || (DAQ_1_ADC == 3) || (DAQ_2_ADC == 3) || (DAQ_3_ADC == 3) || (DAQ_4_ADC == 3)
+    #define ENABLE_ADC_3_IRQ
+#endif
+
+#if (DAQ_0_ADC == 4) || (DAQ_1_ADC == 4) || (DAQ_2_ADC == 4) || (DAQ_3_ADC == 4) || (DAQ_4_ADC == 4)
+    #define ENABLE_ADC_4_IRQ
+#endif
+
+//******************************************************************************
+// Macros para expansão de definições
+//******************************************************************************
+#define PASTE2(a,b)                     a##b
+#define PASTE3(a,b,c)                   a##b##c
+#define PASTE4(a,b,c,d)                 a##b##c##d
+#define PASTE5(a,b,c,d,e)               a##b##c##d##e
+
+//******************************************************************************
+// Macros espefícicas deste módulo
+//******************************************************************************
+#define EnableADC(c)                    PASTE2(ANSELBbits.ANSB,c) = 1
+#define SetDAQAnalogInput(c)            PASTE3(ADCTRGMODEbits.SH,c,ALT) = 0
+#define SetDAQTimeAndClock(c)           {                                       \
+                                            PASTE3(ADC,c,TIMEbits.ADCDIV) = 1;  \
+                                            PASTE3(ADC,c,TIMEbits.SAMC) = 5;    \
+                                            PASTE3(ADC,c,TIMEbits.SELRES) = 3;  \
+                                        }
+#define SetDAQInputMode(c)              {                                       \
+                                            PASTE2(ADCIMCON1bits.SIGN,c) = 0;   \
+                                            PASTE2(ADCIMCON1bits.DIFF,c) = 0;   \
+                                        }
+#define SetADCInputMode(c)              {                                       \
+                                            PASTE2(ADCIMCON1bits.SIGN,c) = 0;   \
+                                            PASTE2(ADCIMCON1bits.DIFF,c) = 0;   \
+                                        }
+#define _SetInterruptPriority(a,b)      PASTE4(a,bits.ADCD,b,IP)
+#define SetInterruptPriority(a)         _SetInterruptPriority(ADC##a##_IPC_REGISTER,a)
+#define _SetInterruptSubPriority(a,b)   PASTE4(a,bits.ADCD,b,IS)
+#define SetInterruptSubPriority(a)      _SetInterruptSubPriority(ADC##a##_IPC_REGISTER,a)
+#define SetDAQInterrupt(c)              {                                       \
+                                            PASTE2(ADCGIRQEN1bits.AGIEN,c) = 1; \
+                                            SetInterruptPriority(c) = 4;        \
+                                            SetInterruptSubPriority(c) = 0;     \
+                                        }
+#define SetDAQInterruptEnable(c)        PASTE3(IEC1bits.ADCD,c,IE) = 1
+#define ClearDAQInterruptEnable(c)      PASTE3(IEC1bits.ADCD,c,IE) = 0
+#define _SetDAQTriggerSource(a,b)       PASTE3(a,bits.TRGSRC,b)
+#define SetDAQTriggerSource(a)          _SetDAQTriggerSource(ADC##a##_TRIG_SOURCE_REGISTER,a) = 7
+#define SetDAQTrigger(c)                {                                       \
+                                            PASTE2(ADCTRGSNSbits.LVL,c) = 0;    \
+                                            SetDAQTriggerSource(c);             \
+                                        }
+#define _SetADCTriggerSource(a,b)       PASTE3(a,bits.TRGSRC,b)
+#define SetADCTriggerSource(a)          _SetADCTriggerSource(ADC##a##_TRIG_SOURCE_REGISTER,a) = 1
+#define SetADCTrigger(c)                {                                       \
+                                            PASTE2(ADCTRGSNSbits.LVL,c) = 0;    \
+                                            SetADCTriggerSource(c);             \
+                                        }
+
+#define _EnableADCModuleClock(a)        PASTE2(ADCANCONbits.ANEN,a)
+#define EnableADCModuleClock(a)         _EnableADCModuleClock(ADC##a##_MODULE)
+#define EnableModuleClock(a)            EnableADCModuleClock(a) = 1
+
+#define _WaitADCModuleReady(a)          PASTE2(ADCANCONbits.WKRDY,a)
+#define WaitADCModuleReady(a)           _WaitADCModuleReady(ADC##a##_MODULE)
+#define WaitModuleReady(a)              while(!WaitADCModuleReady(a))
+
+#define _EnableADCModule(a)             PASTE2(ADCCON3bits.DIGEN,a)
+#define EnableADCModule(a)              _EnableADCModule(ADC##a##_MODULE)
+#define EnableModule(a)                 EnableADCModule(a) = 1
+
+#define DefineDAQVars(a)                PASTE2(uint16_t *sampleCollectionPointer, a);          \
+                                        PASTE2(uint16_t sampleLimit,a);                        \
+                                        PASTE2(uint16_t samplePosition,a);                     \
+                                        PASTE2(SemaphoreHandle_t sampleCompletionSemaphore,a);
+#define DAQSampleCollectionPointer(a)   PASTE2(sampleCollectionPointer, a)
+#define DAQLimit(a)                     PASTE2(sampleLimit, a)
+#define DAQPosition(a)                  PASTE2(samplePosition, a)
+#define DAQSemafore(a)                  PASTE2(sampleCompletionSemaphore, a)
+
 
 //******************************************************************************
 // VARIÁVEIS GLOBAIS
 //******************************************************************************
-int16_t *sampleCollectionPointer;
-int16_t sampleLimit, samplePosition;
-SemaphoreHandle_t sampleCompletionSemaphore;
+#ifdef DAQ_1
+DefineDAQVars(DAQ_1_ADC)
+#endif
+#ifdef DAQ_2
+int16_t *sampleCollectionPointer2;
+int16_t sampleLimit2, samplePosition2;
+SemaphoreHandle_t sampleCompletionSemaphore2;
+#endif
+#ifdef DAQ_3
+int16_t *sampleCollectionPointer3;
+int16_t sampleLimit3, samplePosition3;
+SemaphoreHandle_t sampleCompletionSemaphore3;
+#endif
+#ifdef DAQ_4
+int16_t *sampleCollectionPointer4;
+int16_t sampleLimit4, samplePosition4;
+SemaphoreHandle_t sampleCompletionSemaphore4;
+#endif
+
 
 //******************************************************************************
 // Protótipo de funções do módulo
 //******************************************************************************
 void initADC(void);
-void getSamplesFromSignal(int16_t *sampleCollection, int16_t sizeOfCollection);
-int16_t getAdcValue(void);
+void dataAcquire(uint8_t DAQ, uint16_t *sampleCollection, uint16_t sizeOfCollection);
+uint16_t getAdcValue(int8_t ADC);
 
 //******************************************************************************
 // Funções
@@ -44,9 +183,22 @@ void initADC(void)
     ADCCON2bits.CVDCPL = 0x01;
     ADCCON2bits.SAMC = 0x40;
     
-    ANSELBbits.ANSB2 = 1;
-    //ANSELBbits.ANSB3 = 1;
-    ANSELBbits.ANSB10 = 1;
+    #ifdef DAQ_1
+        EnableADC(DAQ_1_ADC);
+    #endif
+    #ifdef DAQ_2
+        EnableADC(DAQ_2_ADC);
+    #endif
+    #ifdef DAQ_3
+        EnableADC(DAQ_3_ADC);
+    #endif
+    #ifdef DAQ_4
+        EnableADC(DAQ_4_ADC);
+    #endif
+
+    #ifdef ANALOG_INPUT_1_ADC
+        EnableADC(ANALOG_INPUT_1_ADC);
+    #endif
     
     ADCANCONbits.WKUPCLKCNT = 9; // Wakeup exponent = 512 * TADx
     ADCCON3 = 0x00000000;
@@ -56,37 +208,48 @@ void initADC(void)
     ADCCON3bits.CONCLKDIV = 0;   // Control clock frequency equal to input clock
     ADCCON3bits.VREFSEL = 0;     // Select AVDD and AVSS as reference source
     
-    /* Select ADC sample time and conversion clock */
-    ADC2TIMEbits.ADCDIV = 1;     // ADC2 clock frequency is half of control clock = TAD0
-    ADC2TIMEbits.SAMC = 5;       // ADC2 sampling time = 5 * TAD0
-    ADC2TIMEbits.SELRES = 3;     // ADC2 resolution is 12 bits
-    //ADC3TIMEbits.ADCDIV = 1;     // ADC3 clock frequency is half of control clock = TAD1
-    //ADC3TIMEbits.SAMC = 5;       // ADC3 sampling time = 5 * TAD1
-    //ADC3TIMEbits.SELRES = 3;     // ADC3 resolution is 12 bits
-    
-    /* Select analog input for ADC modules, no presync trigger, not sync sampling */
-    ADCTRGMODEbits.SH2ALT = 0;   // ADC2 = AN2
-    //ADCTRGMODEbits.SH3ALT = 0;   // ADC3 = AN3
-    
-    /* Select ADC Class 1 input mode */
-    ADCIMCON1bits.SIGN2 = 0;     // unsigned data format
-    ADCIMCON1bits.DIFF2 = 0;     // Single ended mode
-    //ADCIMCON1bits.SIGN3 = 0;     // unsigned data format
-    //ADCIMCON1bits.DIFF3 = 0;     // Single ended mode
+    #ifdef DAQ_1
+        SetDAQTimeAndClock(DAQ_1_ADC);
+        SetDAQAnalogInput(DAQ_1_ADC);
+        SetDAQInputMode(DAQ_1_ADC);
+    #endif
+    #ifdef DAQ_2
+        SetDAQTimeAndClock(DAQ_2_ADC);
+        SetDAQAnalogInput(DAQ_2_ADC);
+        SetDAQInputMode(DAQ_2_ADC);
+    #endif
+    #ifdef DAQ_3
+        SetDAQTimeAndClock(DAQ_3_ADC);
+        SetDAQAnalogInput(DAQ_3_ADC);
+        SetDAQInputMode(DAQ_3_ADC);
+    #endif
+    #ifdef DAQ_4
+        SetDAQTimeAndClock(DAQ_4_ADC);
+        SetDAQAnalogInput(DAQ_4_ADC);
+        SetDAQInputMode(DAQ_4_ADC);
+    #endif
     
     /* Select ADC Class 2 input mode */
-    ADCIMCON1bits.SIGN10 = 0; // unsigned data format
-    ADCIMCON1bits.DIFF10 = 0; // Single ended mode
+    #ifdef ANALOG_INPUT_1
+        SetADCInputMode(ANALOG_INPUT_1_ADC);
+    #endif
 
     /* Configure ADCGIRQENx */
     ADCGIRQEN1 = 0;
     ADCGIRQEN2 = 0;
-    ADCGIRQEN1bits.AGIEN2 = 1;
-    //ADCGIRQEN1bits.AGIEN3 = 1;
-    IPC15bits.ADCD2IP = 4;
-    IPC15bits.ADCD2IS = 0;
-    //IPC15bits.ADCD3IP = 4;
-    //IPC15bits.ADCD3IS = 0;
+    
+    #ifdef DAQ_1_ADC
+        SetDAQInterrupt(DAQ_1_ADC);
+    #endif
+    #ifdef DAQ_2
+        SetDAQInterrupt(DAQ_2_ADC);
+    #endif
+    #ifdef DAQ_3
+        SetDAQInterrupt(DAQ_3_ADC);
+    #endif
+    #ifdef DAQ_4
+        SetDAQInterrupt(DAQ_4_ADC);
+    #endif
     
     /* Configure ADCCSSx */
     ADCCSS1 = 0;                 // No scanning is used
@@ -109,12 +272,22 @@ void initADC(void)
     ADCFLTR6 = 0;
     
     /* Set up the trigger sources */
-    ADCTRGSNSbits.LVL2 = 0;      // Edge trigger
-    //ADCTRGSNSbits.LVL3 = 0;      // Edge trigger
-    ADCTRGSNSbits.LVL10 = 0;     // Edge trigger
-    ADCTRG1bits.TRGSRC2 = 7;     // Set AN2 to trigger from timer5.
-    //ADCTRG1bits.TRGSRC3 = 5;     // Set AN3 to trigger from timer5.
-    ADCTRG3bits.TRGSRC10 = 1;    // Set AN10 to trigger from software
+    #ifdef DAQ_1
+        SetDAQTrigger(DAQ_1_ADC);
+    #endif
+    #ifdef DAQ_2
+        SetDAQTrigger(DAQ_2_ADC);
+    #endif
+    #ifdef DAQ_3
+        SetDAQTrigger(DAQ_3_ADC);
+    #endif
+    #ifdef DAQ_4
+        SetDAQTrigger(DAQ_4_ADC);
+    #endif
+
+    #ifdef ANALOG_INPUT_1_ADC
+        SetADCTrigger(ANALOG_INPUT_1_ADC);
+    #endif
 
     /* Early interrupt */
     ADCEIEN1 = 0;                // No early interrupt
@@ -129,37 +302,100 @@ void initADC(void)
     while(ADCCON2bits.REFFLT);   // Wait if there is a fault with the reference voltage
     
     /* Enable clock to analog circuit */
-    ADCANCONbits.ANEN2 = 1; // Enable the clock to analog bias
-    ADCANCONbits.ANEN7 = 1; // Enable the clock to analog bias
+    #ifdef DAQ_1
+        EnableModuleClock(DAQ_1_ADC);
+        WaitModuleReady(DAQ_1_ADC);
+        EnableModule(DAQ_1_ADC);
+    #endif
+    #ifdef DAQ_2
+        EnableModuleClock(DAQ_2_ADC);
+        WaitModuleReady(DAQ_2_ADC);
+        EnableModule(DAQ_2_ADC);
+        SetDAQInterruptEnable(DAQ_2_ADC);
+    #endif
+    #ifdef DAQ_3
+        EnableModuleClock(DAQ_3_ADC);
+        WaitModuleReady(DAQ_3_ADC);
+        EnableModule(DAQ_3_ADC);
+        SetDAQInterruptEnable(DAQ_3_ADC);
+    #endif
+    #ifdef DAQ_4
+        EnableModuleClock(DAQ_4_ADC);
+        WaitModuleReady(DAQ_4_ADC);
+        EnableModule(DAQ_4_ADC);
+        SetDAQInterruptEnable(DAQ_4_ADC);
+    #endif
 
-    /* Wait for ADC to be ready */
-    while(!ADCANCONbits.WKRDY2); // Wait until ADC2 is ready
-    while(!ADCANCONbits.WKRDY7); // Wait until ADC7 is ready
+    #ifdef ANALOG_INPUT_1
+        EnableModuleClock(ANALOG_INPUT_1_ADC);
+        WaitModuleReady(ANALOG_INPUT_1_ADC);
+        EnableModule(ANALOG_INPUT_1_ADC);
+    #endif
 
-    /* Enable the ADC module */
-    ADCCON3bits.DIGEN2 = 1; // Enable ADC2
-    ADCCON3bits.DIGEN7 = 1; // Enable ADC7
-    
-    IEC1bits.ADCD2IE = 1;
-    
     T5CON = 0x00000000;
     PR5 = 0x00000190;
     
-    sampleCompletionSemaphore = xSemaphoreCreateBinary();
+    #ifdef DAQ_1
+        DAQSemafore(DAQ_1_ADC) = xSemaphoreCreateBinary();
+    #endif
+    #ifdef DAQ_2
+        sampleCompletionSemaphore2 = xSemaphoreCreateBinary();
+    #endif
+    #ifdef DAQ_3
+        sampleCompletionSemaphore3 = xSemaphoreCreateBinary();
+    #endif
+    #ifdef DAQ_4
+        sampleCompletionSemaphore4 = xSemaphoreCreateBinary();
+    #endif
 }
 
-void getSamplesFromSignal(int16_t *sampleCollection, int16_t sizeOfCollection)
+void dataAcquire(uint8_t DAQ, uint16_t *sampleCollection, uint16_t sizeOfCollection)
 {
-    sampleCollectionPointer = sampleCollection;
-    sampleLimit = sizeOfCollection;
-    samplePosition = 0;
-
-    TMR5 = 0x00000000;
-    T5CONbits.ON = 1;
-    xSemaphoreTake(sampleCompletionSemaphore, portMAX_DELAY);
+    if(T5CONbits.ON == 0)
+        TMR5 = 0x00000000;
+    switch(DAQ)
+    {
+        #ifdef DAQ_1
+        case DAQ_1:
+            DAQSampleCollectionPointer(DAQ_1_ADC) = sampleCollection;
+            DAQLimit(DAQ_1_ADC) = sizeOfCollection;
+            DAQPosition(DAQ_1_ADC) = 0;
+            SetDAQInterruptEnable(DAQ_1_ADC);
+            T5CONbits.ON = 1;
+            xSemaphoreTake(DAQSemafore(DAQ_1_ADC), portMAX_DELAY);
+            break;
+        #endif
+        #ifdef DAQ_2
+        case DAQ_2:
+            sampleCollectionPointer2 = sampleCollection;
+            sampleLimit2 = sizeOfCollection;
+            samplePosition2 = 0;
+            T5CONbits.ON = 1;
+            xSemaphoreTake(sampleCompletionSemaphore2, portMAX_DELAY);
+            break;
+        #endif
+        #ifdef DAQ_3
+        case DAQ_3:
+            sampleCollectionPointer3 = sampleCollection;
+            sampleLimit3 = sizeOfCollection;
+            samplePosition3 = 0;
+            T5CONbits.ON = 1;
+            xSemaphoreTake(sampleCompletionSemaphore3, portMAX_DELAY);
+            break;
+        #endif
+        #ifdef DAQ_4
+        case DAQ_4:
+            sampleCollectionPointer4 = sampleCollection;
+            sampleLimit4 = sizeOfCollection;
+            samplePosition4 = 0;
+            T5CONbits.ON = 1;
+            xSemaphoreTake(sampleCompletionSemaphore4, portMAX_DELAY);
+            break;
+        #endif
+    }
 }
 
-int16_t getAdcValue(void)
+uint16_t getAdcValue(int8_t ADC)
 {
     int16_t result;
     
@@ -173,10 +409,42 @@ int16_t getAdcValue(void)
 }
 
 //******************************************************************************
-// USB Interrupt Handler
+// ADC Interrupt Handler
 //******************************************************************************
+void __attribute__((interrupt(IPL0AUTO), vector(_ADC_DATA1_VECTOR))) vADC1InterruptWrapper( void );
+
+#ifdef ENABLE_ADC_1_IRQ
+void vADC1InterruptHandler(void)
+{
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    int16_t analogData;
+
+    if(IFS1bits.ADCD1IF)
+    {
+        analogData = ADCDATA1;
+        if(samplePosition1 < sampleLimit1)
+        {
+            sampleCollectionPointer1[samplePosition1++] = analogData;
+        }
+        if(samplePosition1 >= sampleLimit1)
+        {
+            T5CON = 0x00000000;
+            IFS1bits.ADCD1IF = 0;
+            IFS1bits.ADCIF = 0;
+            xSemaphoreGiveFromISR(sampleCompletionSemaphore1, &xHigherPriorityTaskWoken);
+        }
+        IFS1bits.ADCD1IF = 0;
+    }
+    portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);
+    IFS1bits.ADCIF = 0;
+}
+#else
+void vADC1InterruptHandler(void){}
+#endif
+
 void __attribute__((interrupt(IPL0AUTO), vector(_ADC_DATA2_VECTOR))) vADC2InterruptWrapper( void );
 
+#ifdef ENABLE_ADC_2_IRQ
 void vADC2InterruptHandler(void)
 {
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
@@ -185,25 +453,29 @@ void vADC2InterruptHandler(void)
     if(IFS1bits.ADCD2IF)
     {
         analogData = ADCDATA2;
-        if(samplePosition < sampleLimit)
+        if(samplePosition2 < sampleLimit2)
         {
-            sampleCollectionPointer[samplePosition++] = analogData;
+            sampleCollectionPointer2[samplePosition2++] = analogData;
         }
-        if(samplePosition >= sampleLimit)
+        if(samplePosition2 >= sampleLimit2)
         {
             T5CON = 0x00000000;
             IFS1bits.ADCD2IF = 0;
             IFS1bits.ADCIF = 0;
-            xSemaphoreGiveFromISR(sampleCompletionSemaphore, &xHigherPriorityTaskWoken);
+            xSemaphoreGiveFromISR(sampleCompletionSemaphore2, &xHigherPriorityTaskWoken);
         }
         IFS1bits.ADCD2IF = 0;
     }
     portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);
     IFS1bits.ADCIF = 0;
 }
+#else
+void vADC2InterruptHandler(void){}
+#endif
 
 void __attribute__((interrupt(IPL0AUTO), vector(_ADC_DATA3_VECTOR))) vADC3InterruptWrapper( void );
 
+#ifdef ENABLE_ADC_3_IRQ
 void vADC3InterruptHandler(void)
 {
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
@@ -212,21 +484,54 @@ void vADC3InterruptHandler(void)
     if(IFS1bits.ADCD3IF)
     {
         analogData = ADCDATA3;
-        if(samplePosition < sampleLimit)
+        if(samplePosition3 < sampleLimit3)
         {
-            sampleCollectionPointer[samplePosition++] = analogData;
+            sampleCollectionPointer3[samplePosition3++] = analogData;
         }
-        if(samplePosition >= sampleLimit)
+        if(samplePosition3 >= sampleLimit3)
         {
             T5CON = 0x00000000;
             IFS1bits.ADCD3IF = 0;
             IFS1bits.ADCIF = 0;
-            xSemaphoreGiveFromISR(sampleCompletionSemaphore, &xHigherPriorityTaskWoken);
+            xSemaphoreGiveFromISR(sampleCompletionSemaphore3, &xHigherPriorityTaskWoken);
         }
         IFS1bits.ADCD3IF = 0;
     }
     portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);
     IFS1bits.ADCIF = 0;    
 }
+#else
+void vADC3InterruptHandler(void) {}
+#endif
 
+void __attribute__((interrupt(IPL0AUTO), vector(_ADC_DATA4_VECTOR))) vADC4InterruptWrapper( void );
+
+#ifdef ENABLE_ADC_4_IRQ
+void vADC4InterruptHandler(void)
+{
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    int16_t analogData;
+
+    if(IFS1bits.ADCD4IF)
+    {
+        analogData = ADCDATA4;
+        if(samplePosition4 < sampleLimit4)
+        {
+            sampleCollectionPointer4[samplePosition4++] = analogData;
+        }
+        if(samplePosition4 >= sampleLimit4)
+        {
+            T5CON = 0x00000000;
+            IFS1bits.ADCD4IF = 0;
+            IFS1bits.ADCIF = 0;
+            xSemaphoreGiveFromISR(sampleCompletionSemaphore4, &xHigherPriorityTaskWoken);
+        }
+        IFS1bits.ADCD4IF = 0;
+    }
+    portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);
+    IFS1bits.ADCIF = 0;
+}
+#else
+void vADC4InterruptHandler(void){}
+#endif
 //******************************************************************************

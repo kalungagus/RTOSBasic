@@ -11,4 +11,9 @@ Source/include/mpu_wrappers.h  \
 Source/include/list.h  \
 USBFreeRTOS.h  \
 ADCFreeRTOS.h  \
- PWMFreeRTOS.h 
+ HardwareConfig.h  \
+PWMFreeRTOS.h  \
+IOPorts.h  \
+INA219.h  \
+HC-SR04.h  \
+HX711.h 

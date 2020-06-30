@@ -7,14 +7,20 @@
 #ifndef _LED_INTERFACE_
     #define _LED_INTERFACE_
 
+#include "IOPorts.h"
+
+#define LED_ON               1
+#define LED_OFF              0
+
 typedef struct
 {
-    uint8_t portID;
+    IOPort_t port;
     uint8_t status;
 } LedInfo;
 
-void LEDInterfaceInit(void);
-void setLedInfo(LedInfo *);
+extern void setupLed(LedInfo *led);
+extern void LEDInterfaceInit(void);
+extern void setLedInfo(LedInfo *);
 
 #endif
 //******************************************************************************

@@ -57,8 +57,6 @@
 // VARIÁVEIS GLOBAIS
 //******************************************************************************
 uint8_t receptionBuffer[EP3RXBUFFSIZE];
-uint16_t receptionPointer=0;
-uint16_t totalBytesReceived=0;
 
 volatile uint8_t usbAddress=0;
 volatile uint8_t usbConfiguration;
@@ -66,6 +64,8 @@ volatile uint16_t usbInterface;
 volatile uint16_t controlState;
 volatile uint8_t maxTransmissionPacketSize;
 volatile uint8_t maxReceptionPacketSize;
+
+uint16_t usbLoadedBytes;
 
 deviceRequestPacket_t deviceRequest;
 
@@ -220,6 +220,9 @@ int16_t receivePacketFromEndpoint3(int8_t *copyBuffer, int16_t bufferLength);
 int16_t sendPacketToEndpoint0(int8_t *copyBuffer, int16_t bufferLength);
 int16_t sendPacketToEndpoint1(int8_t *copyBuffer, int16_t bufferLength);
 int16_t sendPacketToEndpoint2(int8_t *copyBuffer, int16_t bufferLength);
+void endPacketLoadingToEndpoint2(void);
+int16_t loadPacketToEndpoint2(int8_t *copyBuffer, int16_t bufferLength);
+void startPacketLoadingToEndpoint2(void);
 
 //******************************************************************************
 // Tasks
@@ -291,6 +294,21 @@ int16_t getUSBPacket(int8_t *copyBuffer, uint16_t bufferSize)
     }
     xStreamBufferSetTriggerLevel(xReceptionStream, 1);
     return(bytesReceived);
+}
+
+void startLoadingUSBPacket(void)
+{
+    startPacketLoadingToEndpoint2();
+}
+
+int16_t loadUSBPacket(int8_t *copyBuffer, uint16_t bufferSize)
+{
+    loadPacketToEndpoint2(copyBuffer, bufferSize);
+}
+
+void endLoadingUSBPacket(void)
+{
+    endPacketLoadingToEndpoint2();
 }
 
 int16_t sendUSBPacket(int8_t *copyBuffer, uint16_t bufferSize)
@@ -494,19 +512,12 @@ void vUSBInterruptHandler(void)
     /* Endpoint 3 RX Interrupt Handler */
     if(USBCSR1bits.EP3RXIF == 1) // BULK Endpoint 3 Received A Packet.
     {
-        int16_t bytesReceived;
+        int16_t bytesReceived=0;
         
-        bytesReceived = receivePacketFromEndpoint3(receptionBuffer, sizeof(receptionBuffer));
-        xStreamBufferSendFromISR(xReceptionStream, (const void *)receptionBuffer, bytesReceived, NULL );/**/
-        /*bytesReceived = receivePacketFromEndpoint3(&receptionBuffer[receptionPointer], sizeof(receptionBuffer) - receptionPointer);
-        receptionPointer += bytesReceived;
-        if(bytesReceived != maxReceptionPacketSize)
-        {
-            totalBytesReceived = receptionPointer;
-            receptionPointer = 0;
-            xStreamBufferSendFromISR(xReceptionStream, (const void *)receptionBuffer, totalBytesReceived, NULL );
-        }/**/
+        while(USBE3CSR1bits.RXPKTRDY)
+            bytesReceived += receivePacketFromEndpoint3(&receptionBuffer[bytesReceived], sizeof(receptionBuffer) - bytesReceived);
         USBCSR1bits.EP3RXIF = 0;
+        xStreamBufferSendFromISR(xReceptionStream, (const void *)receptionBuffer, bytesReceived, NULL );
     }
 
     IFS4bits.USBIF = 0;  // Reset the USB Interrupt flag
@@ -731,6 +742,38 @@ int16_t sendPacketToEndpoint1(int8_t *copyBuffer, int16_t bufferLength)
     }
     sendAckToEndpoint1();
     return(bytesWritten);    
+}
+
+
+void startPacketLoadingToEndpoint2(void)
+{
+    usbLoadedBytes = 0;
+}
+
+int16_t loadPacketToEndpoint2(int8_t *copyBuffer, int16_t bufferLength)
+{
+    int8_t *pointerToTransmBuffer = (uint8_t *)&USBFIFO2;
+    uint16_t bytesWritten = 0;
+
+    while(USBE2CSR0bits.TXPKTRDY);
+    
+    while(bytesWritten != bufferLength)
+    {
+        *pointerToTransmBuffer = copyBuffer[bytesWritten++];
+        usbLoadedBytes++;
+        if((usbLoadedBytes%maxTransmissionPacketSize) == 0)
+        {
+            USBE2CSR0bits.TXPKTRDY = 1;
+            while(USBE2CSR0bits.TXPKTRDY);
+        }
+    }
+    return(bytesWritten);    
+}
+
+void endPacketLoadingToEndpoint2(void)
+{
+    USBE2CSR0bits.TXPKTRDY = 1;
+    while(USBE2CSR0bits.TXPKTRDY);
 }
 
 int16_t sendPacketToEndpoint2(int8_t *copyBuffer, int16_t bufferLength)

@@ -12,5 +12,4 @@ Source/include/list.h  \
 Source/include/queue.h  \
  Source/include/task.h  \
 LEDInterface.h  \
-DigitalPort.h  \
-HardwareConfig.h 
+IOPorts.h 

@@ -84,29 +84,29 @@
 #include "LEDInterface.h"
 #include "ADCFreeRTOS.h"
 #include "PWMFreeRTOS.h"
-#include "DigitalPort.h"
+#include "IOPorts.h"
 
 extern void USBPacketManagerInit(void);
 
 PWMModule_t redModule = 
 {
     .OC = 3,
-    .DutyCycle = 10,
-    .Port = PORT_RPB5,
+    .DutyCycle = 50,
+    .Port.ID = IO_B5,
 };
 
 PWMModule_t greenModule = 
 {
     .OC = 4,
-    .DutyCycle = 80,
-    .Port = PORT_RPB1,
+    .DutyCycle = 50,
+    .Port.ID = IO_B1,
 };
 
 PWMModule_t blueModule = 
 {
     .OC = 5,
     .DutyCycle = 50,
-    .Port = PORT_RPB0,
+    .Port.ID = IO_B0,
 };
 
 //==============================================================================
@@ -114,20 +114,28 @@ PWMModule_t blueModule =
 //==============================================================================
 static void taskButtonRead(void *pvParameters)
 {
-    LedInfo led;
+    LedInfo led = {.port = IO_E3, .status=LED_OFF,};
+    IOPort_t button;
     int8_t lastStatus=0;
+    
+    setupLed(&led);
+    
+    button.ID = IO_G12;
+    setPinDirection(button, IO_INPUT);
+    setPinAnalogState(button, PIN_DIGITAL);
+    setInterruptOnChange(button, ENABLE_INTERRUPT);
+    lastStatus = readPin(button);
     
     for(;;)
     {
-        waitInputOnChangeEvent();
-        if(lastStatus != DigitalPortRead(DIGITAL_INPUT_1))
+        waitChangeEvent(button);
+        if(lastStatus != readPin(button))
         {
-            lastStatus = DigitalPortRead(DIGITAL_INPUT_1);
-            led.portID = GetDigitalPortID(DIGITAL_OUTPUT_2);
+            lastStatus = readPin(button);
             if(lastStatus)
-                led.status = 0;
+                led.status = LED_OFF;
             else
-                led.status = 1;
+                led.status = LED_ON;
             setLedInfo(&led);
         }
     }
@@ -136,13 +144,17 @@ static void taskButtonRead(void *pvParameters)
 static void task2(void *pvParameters)
 {
     TickType_t xLastWakeTime;
+    IOPort_t led;
     const TickType_t xFrequency = 1000 / portTICK_PERIOD_MS;
     
+    led.ID = IO_E4;
+    setPinDirection(led, IO_OUTPUT);
+    setPinAnalogState(led, PIN_DIGITAL);
+
     xLastWakeTime = xTaskGetTickCount();
     for(;;)
     {
-        //LATEbits.LATE4 = ~LATEbits.LATE4;
-        DigitalPortInvert(DIGITAL_OUTPUT_3);
+        invertPin(led);
         vTaskDelayUntil( &xLastWakeTime, xFrequency );
     }
 }
@@ -217,14 +229,16 @@ void main(void)
     ANSELF = 0x00000000;    // Disable analog functions
     ANSELG = 0x00000000;    // Disable analog functions
 
-    initDigitalPorts();
-
     LEDInterfaceInit();
     USBPacketManagerInit();
-    initADC();
-    initPWM(&redModule);
-    initPWM(&greenModule);
-    initPWM(&blueModule);
+    //initADC();
+    
+    //initINA219();
+    InitHCSR04();
+    //InitHX711();
+    //initPWM(&redModule);
+    //initPWM(&greenModule);
+    //initPWM(&blueModule);
 
     xTaskCreate(taskButtonRead, "ButtonRead", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL);
     xTaskCreate(task2, "Blink", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL);
