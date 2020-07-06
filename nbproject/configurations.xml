@@ -4,46 +4,50 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <logicalFolder name="f2" displayName="Application" projectFiles="true">
-        <logicalFolder name="f1" displayName="Services" projectFiles="true">
+      <logicalFolder name="Application" displayName="Application" projectFiles="true">
+        <logicalFolder name="Services" displayName="Services" projectFiles="true">
         </logicalFolder>
-        <logicalFolder name="f2" displayName="Tasks" projectFiles="true">
+        <logicalFolder name="Tasks" displayName="Tasks" projectFiles="true">
         </logicalFolder>
       </logicalFolder>
-      <logicalFolder name="f3" displayName="Framework" projectFiles="true">
-        <logicalFolder name="f5" displayName="ADC" projectFiles="true">
-          <itemPath>ADCFreeRTOS.h</itemPath>
+      <logicalFolder name="Framework" displayName="Framework" projectFiles="true">
+        <logicalFolder name="ADC" displayName="ADC" projectFiles="true">
+          <itemPath>Framework/ADC/ADC.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f9" displayName="HC-SR04" projectFiles="true">
-          <itemPath>HC-SR04.h</itemPath>
+        <logicalFolder name="HC-SR04" displayName="HC-SR04" projectFiles="true">
+          <itemPath>Framework/HC-SR04/HC-SR04.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f10" displayName="HX711" projectFiles="true">
-          <itemPath>HX711.h</itemPath>
+        <logicalFolder name="HX711" displayName="HX711" projectFiles="true">
+          <itemPath>Framework/HX711/HX711.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f6" displayName="I2C" projectFiles="true">
-          <itemPath>I2C.h</itemPath>
+        <logicalFolder name="I2C" displayName="I2C" projectFiles="true">
+          <itemPath>Framework/I2C/I2C.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f7" displayName="INA219" projectFiles="true">
-          <itemPath>INA219.h</itemPath>
+        <logicalFolder name="INA219" displayName="INA219" projectFiles="true">
+          <itemPath>Framework/INA219/INA219.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f8" displayName="Input Capture" projectFiles="true">
-          <itemPath>InputCapture.h</itemPath>
+        <logicalFolder name="Input Capture"
+                       displayName="Input Capture"
+                       projectFiles="true">
+          <itemPath>Framework/Input Capture/InputCapture.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f11" displayName="IO Ports" projectFiles="true">
-          <itemPath>IOPorts.h</itemPath>
+        <logicalFolder name="IO Ports" displayName="IO Ports" projectFiles="true">
+          <itemPath>Framework/IO Ports/IOPorts.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f3" displayName="LED Interface" projectFiles="true">
-          <itemPath>LEDInterface.h</itemPath>
+        <logicalFolder name="LED Interface"
+                       displayName="LED Interface"
+                       projectFiles="true">
+          <itemPath>Framework/LED Interface/LEDInterface.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f2" displayName="PWM" projectFiles="true">
-          <itemPath>PWMFreeRTOS.h</itemPath>
+        <logicalFolder name="PWM" displayName="PWM" projectFiles="true">
+          <itemPath>Framework/PWM/PWM.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f12" displayName="Timer" projectFiles="true">
-          <itemPath>Timer.h</itemPath>
+        <logicalFolder name="Timer" displayName="Timer" projectFiles="true">
+          <itemPath>Framework/Timer/Timer.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="f1" displayName="USB" projectFiles="true">
-          <itemPath>USBFreeRTOS.h</itemPath>
-          <itemPath>USBDefinitions.h</itemPath>
+        <logicalFolder name="USB" displayName="USB" projectFiles="true">
+          <itemPath>Framework/USB/USB.h</itemPath>
+          <itemPath>Framework/USB/USBDefinitions.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f1" displayName="FreeRTOS" projectFiles="true">
@@ -80,70 +84,68 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <logicalFolder name="f2" displayName="Application" projectFiles="true">
-        <logicalFolder name="f2" displayName="Services" projectFiles="true">
-          <itemPath>SystemHooks.c</itemPath>
+      <logicalFolder name="Application" displayName="Application" projectFiles="true">
+        <logicalFolder name="Services" displayName="Services" projectFiles="true">
+          <itemPath>Application/Services/SystemHooks.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="f1" displayName="Tasks" projectFiles="true">
-          <itemPath>USBPacketManager.c</itemPath>
+        <logicalFolder name="Tasks" displayName="Tasks" projectFiles="true">
+          <itemPath>Application/Tasks/USBPacketManager.c</itemPath>
         </logicalFolder>
-        <itemPath>main.c</itemPath>
+        <itemPath>Application/main.c</itemPath>
       </logicalFolder>
-      <logicalFolder name="f3" displayName="Framework" projectFiles="true">
-        <logicalFolder name="f2" displayName="ADC" projectFiles="true">
-          <itemPath>ADCFreeRTOS.c</itemPath>
-          <itemPath>ADC2_isr.S</itemPath>
-          <itemPath>ADC3_isr.S</itemPath>
-          <itemPath>ADC1_isr.S</itemPath>
-          <itemPath>ADC4_isr.S</itemPath>
+      <logicalFolder name="Framework" displayName="Framework" projectFiles="true">
+        <logicalFolder name="ADC" displayName="ADC" projectFiles="true">
+          <itemPath>Framework/ADC/ADC.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="f3" displayName="Digital Port" projectFiles="true">
+        <logicalFolder name="HC-SR04" displayName="HC-SR04" projectFiles="true">
+          <itemPath>Framework/HC-SR04/HC-SR04.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="f9" displayName="HC-SR04" projectFiles="true">
-          <itemPath>HC-SR04.c</itemPath>
+        <logicalFolder name="HX711" displayName="HX711" projectFiles="true">
+          <itemPath>Framework/HX711/HX711.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="f10" displayName="HX711" projectFiles="true">
-          <itemPath>HX711.c</itemPath>
+        <logicalFolder name="I2C" displayName="I2C" projectFiles="true">
+          <itemPath>Framework/I2C/I2C.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="f6" displayName="I2C" projectFiles="true">
-          <itemPath>I2C.c</itemPath>
+        <logicalFolder name="INA219" displayName="INA219" projectFiles="true">
+          <itemPath>Framework/INA219/INA219.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="f7" displayName="INA219" projectFiles="true">
-          <itemPath>INA219.c</itemPath>
+        <logicalFolder name="Input Capture"
+                       displayName="Input Capture"
+                       projectFiles="true">
+          <itemPath>Framework/Input Capture/InputCapture.c</itemPath>
+          <itemPath>Framework/Input Capture/IC1_isr.S</itemPath>
+          <itemPath>Framework/Input Capture/IC2_isr.S</itemPath>
+          <itemPath>Framework/Input Capture/IC3_isr.S</itemPath>
+          <itemPath>Framework/Input Capture/IC4_isr.S</itemPath>
         </logicalFolder>
-        <logicalFolder name="f8" displayName="Input Capture" projectFiles="true">
-          <itemPath>InputCapture.c</itemPath>
-          <itemPath>IC2_isr.S</itemPath>
-          <itemPath>IC4_isr.S</itemPath>
-          <itemPath>IC1_isr.S</itemPath>
-          <itemPath>IC3_isr.S</itemPath>
+        <logicalFolder name="IO Ports" displayName="IO Ports" projectFiles="true">
+          <itemPath>Framework/IO Ports/IOPorts.c</itemPath>
+          <itemPath>Framework/IO Ports/PortAOnChange_isr.S</itemPath>
+          <itemPath>Framework/IO Ports/PortBOnChange_isr.S</itemPath>
+          <itemPath>Framework/IO Ports/PortCOnChange_isr.S</itemPath>
+          <itemPath>Framework/IO Ports/PortDOnChange_isr.S</itemPath>
+          <itemPath>Framework/IO Ports/PortEOnChange_isr.S</itemPath>
+          <itemPath>Framework/IO Ports/PortFOnChange_isr.S</itemPath>
+          <itemPath>Framework/IO Ports/PortGOnChange_isr.S</itemPath>
         </logicalFolder>
-        <logicalFolder name="f11" displayName="IO Ports" projectFiles="true">
-          <itemPath>IOPorts.c</itemPath>
-          <itemPath>PortAOnChange_isr.S</itemPath>
-          <itemPath>PortBOnChange_isr.S</itemPath>
-          <itemPath>PortCOnChange_isr.S</itemPath>
-          <itemPath>PortDOnChange_isr.S</itemPath>
-          <itemPath>PortEOnChange_isr.S</itemPath>
-          <itemPath>PortFOnChange_isr.S</itemPath>
-          <itemPath>PortGOnChange_isr.S</itemPath>
+        <logicalFolder name="LED Interface"
+                       displayName="LED Interface"
+                       projectFiles="true">
+          <itemPath>Framework/LED Interface/LEDInterface.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="f5" displayName="LED Interface" projectFiles="true">
-          <itemPath>LEDInterface.c</itemPath>
+        <logicalFolder name="PWM" displayName="PWM" projectFiles="true">
+          <itemPath>Framework/PWM/PWM.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="f4" displayName="PWM" projectFiles="true">
-          <itemPath>PWMFreeRTOS.c</itemPath>
+        <logicalFolder name="Timer" displayName="Timer" projectFiles="true">
+          <itemPath>Framework/Timer/Timer.c</itemPath>
+          <itemPath>Framework/Timer/Timer2_isr.S</itemPath>
+          <itemPath>Framework/Timer/Timer3_isr.S</itemPath>
+          <itemPath>Framework/Timer/Timer4_isr.S</itemPath>
+          <itemPath>Framework/Timer/Timer5_isr.S</itemPath>
         </logicalFolder>
-        <logicalFolder name="f12" displayName="Timer" projectFiles="true">
-          <itemPath>Timer.c</itemPath>
-          <itemPath>Timer3_isr.S</itemPath>
-          <itemPath>Timer2_isr.S</itemPath>
-          <itemPath>Timer4_isr.S</itemPath>
-          <itemPath>Timer5_isr.S</itemPath>
-        </logicalFolder>
-        <logicalFolder name="f1" displayName="USB" projectFiles="true">
-          <itemPath>USBFreeRTOS_isr.S</itemPath>
-          <itemPath>USBFreeRTOS.c</itemPath>
+        <logicalFolder name="USB" displayName="USB" projectFiles="true">
+          <itemPath>Framework/USB/USB.c</itemPath>
+          <itemPath>Framework/USB/USB_isr.S</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f1" displayName="FreeRTOS" projectFiles="true">
@@ -165,10 +167,12 @@
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
-    <logicalFolder name="f1" displayName="System Configs" projectFiles="true">
+    <logicalFolder name="System Configs"
+                   displayName="System Configs"
+                   projectFiles="true">
+      <itemPath>System Configs/HardwareConfig.h</itemPath>
+      <itemPath>System Configs/USBConfig.h</itemPath>
       <itemPath>FreeRTOSConfig.h</itemPath>
-      <itemPath>USBConfig.h</itemPath>
-      <itemPath>HardwareConfig.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -228,7 +232,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value=".;Source\include;Source\portable\MPLAB\PIC32MZ"/>
+                  value=".;Source\include;Source\portable\MPLAB\PIC32MZ;System Configs"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
@@ -359,7 +363,6 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="memories.configurationmemory" value="true"/>
         <property key="memories.dataflash" value="true"/>
         <property key="memories.eeprom" value="true"/>
